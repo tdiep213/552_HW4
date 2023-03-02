@@ -1,0 +1,9 @@
+// Write your answer to Problem 1 (b) here
+All programs test forwarding by assigning the register the instruction before the jump. 
+
+Program 1 tests both the jump feature and link features of JALR. It tests the link feature by storing the linked value then 
+referencing it against a known value. It tests only part of the jump feature by jumping past one instruction relative to itself.
+
+Program 2 tests the immediate arithmetic operation works properally by jumping a set number of instructions that are a known address value away. 
+
+Program 3 tests both the jump and exeption handling by having the jump target an out-of-bounds address. 

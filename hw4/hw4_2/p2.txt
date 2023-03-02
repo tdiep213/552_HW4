@@ -1,0 +1,7 @@
+// Write your answer to Problem 2 (b) and (c) here
+
+Program 1 uses a for loop to increment a counter 15 times. If branch prediction isn't used, the program would have to wait 5 cycles each loop 
+leading to 75 unused cycles. 15 is used because a larger value isn't needed to show that the delay would linearly increase with 
+each loop cycle. 
+
+Program 2 

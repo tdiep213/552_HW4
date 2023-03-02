@@ -1,0 +1,6 @@
+*.img
+*.lst
+*.trace
+*.ptrace
+*.reg
+*.dmem
