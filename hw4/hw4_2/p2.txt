@@ -4,4 +4,13 @@ Program 1 uses a for loop to increment a counter 15 times. If branch prediction 
 leading to 75 unused cycles. 15 is used because a larger value isn't needed to show that the delay would linearly increase with 
 each loop cycle. 
 
-Program 2 uses nested If statements to test branch prediction cases. Overall there are 4 times the branch should be taken, and 1 where it shouldn't. We test the depth of the nested if statements, and then proceed to test a case where predicting not-taken is faster, and a case where predict not-taken is slower/ could break a malfunctioning processor (by introducing a RAW hazard during the branch not taken)  
+Program 2 uses nested If statements to test branch prediction cases. Overall there are 4 times the branch should be taken, and 1 where it shouldn't. We test the depth of the nested if statements, and then proceed to test a case where predicting not-taken is faster, and a case where predict not-taken is slower/ could break a malfunctioning processor (by introducing a RAW hazard during the branch not taken) 
+
+Question A and B. (See above)
+
+Question C.
+
+Currently our processor determines the branch at the end of Decode. 
+If we predict not-taken we'd need to flush 1 cycle that is at the Fetch stage if we end up taking the branch. 
+If there was benefit to moving our branch to EX, then we'd need to flush more stages, 
+especially if there are certain hazards like RAW that we haven't put exceptions in for yet. 
