@@ -10,7 +10,13 @@ Question A and B. (See above)
 
 Question C.
 
-Currently our processor determines the branch at the end of Decode. 
-If we predict not-taken we'd need to flush 1 cycle that is at the Fetch stage if we end up taking the branch. 
-If there was benefit to moving our branch to EX, then we'd need to flush more stages, 
-especially if there are certain hazards like RAW that we haven't put exceptions in for yet. 
+Currently our processor determines the branch at the end of Execute. 
+If we predict not taken, and the branch is not taken, the operation will not need to flush any stage 
+so it will taken the nominal number of cycles. 
+If we predict not taken, but the branch IS taken, then we'd need to flush at least two stages,
+resulting in a minimum of 2 wasted cycles, but could include more cycles if particular stages need to be stalled
+to perform the obselete, not-taken instructions.
+
+If you can garauntee that the last ALU operation used the same reg as the following branch, then a cycle can be shaved off,
+which limits flushes to 1 stage, and decreases likelihood of stalled not-taken instructions. 
+This would be a form of X->D forwarding.
