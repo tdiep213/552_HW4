@@ -5,7 +5,7 @@
 // While not an optimal implementation, we can't assume that it will always be optimal at every stage.
 
 // The deepest nested path will result in r4 = 4, and each missed if-branch will lower the final value by 1.
-
+//
 // Can add stress-test operations within each THEN label
 
 LBI r4, 0
