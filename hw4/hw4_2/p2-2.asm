@@ -40,7 +40,8 @@ SUBI r1, r1 8
 BEQZ r1, .THEN3    // taken: faster if branch then2 predicted not-taken 
 
 .ELSE3:
-STU r3, r2, 32     // Store value of r3 (28) into mem[r2 + 32(signExt)] and also perform r2 + 32(signExt)
+ADDI r2, r2, 10    //
+STU r3, r2, 22     // Store value of r3 (28) into mem[r2 + 32(signExt)] and also perform r2 + 32(signExt)
 
 ADDI r4, r4, -1
 
@@ -64,7 +65,7 @@ LBI r5, 0
 HALT
 
 .THEN5:
-SUBI r4, r4, 2     // r4 will equal 3 by this point. Sub 2 to get 1, then AND with r5 to ensure endpoint and path were correct
-LBI r5, 1
-AND r5, r5, r4
+SUBI r4, r4, 2     // r4 will equal 3 by this point. Sub 2 to get 1, 
+                   //then add to r5 to ensure endpoint and path were correct
+ADD r5, r5, r4
 HALT

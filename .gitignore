@@ -4,3 +4,6 @@
 *.ptrace
 *.reg
 *.dmem
+*.tgz
+*.log
+topdir.txt
