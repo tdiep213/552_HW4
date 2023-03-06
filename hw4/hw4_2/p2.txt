@@ -4,4 +4,19 @@ Program 1 uses a for loop to increment a counter 15 times. If branch prediction 
 leading to 75 unused cycles. 15 is used because a larger value isn't needed to show that the delay would linearly increase with 
 each loop cycle. 
 
-Program 2 
+Program 2 uses nested If statements to test branch prediction cases. Overall there are 4 times the branch should be taken, and 1 where it shouldn't. We test the depth of the nested if statements, and then proceed to test a case where predicting not-taken is faster, and a case where predict not-taken is slower/ could break a malfunctioning processor (by introducing a RAW hazard during the branch not taken) 
+
+Question A and B. (See above)
+
+Question C.
+
+Currently our processor determines the branch at the end of Execute. 
+If we predict not taken, and the branch is not taken, the operation will not need to flush any stage 
+so it will taken the nominal number of cycles. 
+If we predict not taken, but the branch IS taken, then we'd need to flush at least two stages,
+resulting in a minimum of 2 wasted cycles, but could include more cycles if particular stages need to be stalled
+to perform the obselete, not-taken instructions.
+
+If you can garauntee that the last ALU operation used the same reg as the following branch, then a cycle can be shaved off,
+which limits flushes to 1 stage, and decreases likelihood of stalled not-taken instructions. 
+This would be a form of X->D forwarding.
